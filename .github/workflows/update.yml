@@ -13,13 +13,27 @@ jobs:
       - name: Check Out Code
         uses: actions/checkout@v3.1.0
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
 
       - name: Sync to Server Kenobi
         run: |
           # Replace with your synchronization command for Server 1
-          ssh gustavo@200.144.221.118 "cd /home/gustavo/testeCICD && git pull origin main"
+          ssh username@HOST "cd /home/gustavo/testeCICD && git pull origin main"
+
+     # steps:
+     #  - name: Check Out Code
+     #    uses: actions/checkout@v3.1.0
+     #    with:
+     #      key: ${{ secrets.SSH_PRIVATE_KEY }}
+     #      known_hosts: ${{ secrets.SSH_HOST }}
+
+     #  - name: Sync to Server Kenobi
+     #    run: |
+     #      # Replace with your synchronization command for Server 1
+     #      ssh gustavo@200.144.221.118 "cd /home/gustavo/testeCICD && git pull origin main"
 
       # - name: Sync to Server Ahsoka
       #   run: |

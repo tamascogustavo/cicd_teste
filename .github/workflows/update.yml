@@ -28,5 +28,5 @@ jobs:
         connect_timeout: # optional, default is 30s
         # execute commands on ssh
         script: |
-          cd /home/gustavo/testeCICD/cicd_teste
-          touch hi.txt
+          cd testeCICD/cicd_teste/
+          git pull origin main 

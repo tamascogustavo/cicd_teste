@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  CI:
+  update:
     runs-on: ubuntu-latest
 
     steps:

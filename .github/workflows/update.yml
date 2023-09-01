@@ -9,24 +9,73 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-    - name: ssh-pipeline
+    - name: SSH Remote Commands
       # You may pin to the exact commit or the version.
-      # uses: cross-the-world/ssh-pipeline@7f022867934a210af826af99ef80d96f03a094d5
-      uses: cross-the-world/ssh-pipeline@v1.2.0
+      # uses: appleboy/ssh-action@55dabf81b49d4120609345970c91507e2d734799
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        # ssh remote host
-        host: ${{ secrets.HOST }}
-        # ssh remote port
-        port: # optional, default is 22
-        # ssh remote user
-        user: ${{ secrets.USER }}
-        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
-        key: ${{ secrets.SSH_KEY }} # optional
-        # ssh remote password
-        pass: # optional
-        # connection timeout to remote host
-        connect_timeout: # optional, default is 30s
-        # execute commands on ssh
+        # SSH host address.
+        host: ${{ secrets.HOST }} # optional
+        # SSH port number (optional, default is 22)
+        port: 
+        # Passphrase for the SSH key (optional)
+        passphrase: 
+        # SSH username (optional)
+        username: ${{ secrets.USER }}
+        # SSH password (optional)
+        password: 
+        # Enable synchronous execution if multiple hosts are involved (optional)
+        sync: 
+        # Include more ciphers by using insecure ciphers (optional)
+        use_insecure_cipher: 
+        # Allowed cipher algorithms (optional).
+        # If unspecified, a sensible default is used.
+        cipher: 
+        # Timeout duration for establishing SSH connection to the host (optional, default is 30s)
+        timeout: 
+        # Timeout duration for SSH commands execution (optional, default is 10m)
+        command_timeout: 
+        # Content of the SSH private key. For example, the raw content of ~/.ssh/id_rsa (optional)
+        key: ${{ secrets.SSH_KEY }}
+        # Path to the SSH private key file (optional)
+        key_path: 
+        # SHA256 fingerprint of the host public key (optional)
+        fingerprint: 
+        # SSH proxy host address (optional)
+        proxy_host: 
+        # SSH proxy port number (optional, default is 22)
+        proxy_port: 
+        # SSH proxy username (optional)
+        proxy_username: 
+        # SSH proxy password (optional)
+        proxy_password: 
+        # SSH proxy key passphrase (optional)
+        proxy_passphrase: 
+        # Timeout duration for establishing SSH connection to the proxy host (optional, default is 30s)
+        proxy_timeout: 
+        # Content of the SSH proxy private key (optional).
+        # For example, the raw content of ~/.ssh/id_rsa.
+        proxy_key: 
+        # Path to the SSH proxy private key file (optional)
+        proxy_key_path: 
+        # SHA256 fingerprint of the proxy host public key (optional)
+        proxy_fingerprint: 
+        # Allowed cipher algorithms for the proxy (optional).
+        # If unspecified, a sensible default is used.
+        proxy_cipher: 
+        # Include more ciphers for the proxy by using insecure ciphers (optional)
+        proxy_use_insecure_cipher: 
+        # Commands to be executed (optional)
         script: |
-          mkdir -p /home/github/test/test1 &&
-          mkdir -p /home/github/test/test2
+          cd testeCICD/cicd_teste/
+          git pull origin main
+        # Stop the script after the first failure (optional)
+        script_stop: 
+        # Environment variables to be passed to the shell script (optional)
+        envs: 
+        # Flexible configuration for environment value transfer (optional)
+        envs_format: 
+        # Enable debug mode (optional)
+        debug: 
+        # Pass all environment variables to the shell script (optional)
+        allenvs: 

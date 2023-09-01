@@ -9,36 +9,23 @@ jobs:
   update:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Check Out Code
-        uses: actions/checkout@v3.1.0
-        # with:
-        #   host: ${{ secrets.HOST }}
-        #   username: ${{ secrets.USER }}
-        #   key: ${{ secrets.SSH_KEY }}
-          # passphrase: ${{ secrets.PASSPHRASE }}
-
-      - name: Sync to Server Kenobi
-        run: |
-          ssh ${{ secrets.USER }}@${{ secrets.HOST }} -i ${{ secrets.SSH_KEY }} "cd /home/gustavo/testeCICD/cicd_teste && touch hi.txt"
-     # steps:
-     #  - name: Check Out Code
-     #    uses: actions/checkout@v3.1.0
-     #    with:
-     #      key: ${{ secrets.SSH_PRIVATE_KEY }}
-     #      known_hosts: ${{ secrets.SSH_HOST }}
-
-     #  - name: Sync to Server Kenobi
-     #    run: |
-     #      # Replace with your synchronization command for Server 1
-     #      ssh gustavo@200.144.221.118 "cd /home/gustavo/testeCICD && git pull origin main"
-
-      # - name: Sync to Server Ahsoka
-      #   run: |
-      #     # Replace with your synchronization command for Server 2
-      #     ssh user@server2 "cd /path/to/your/shared/folder && git pull origin main"
-
-      # - name: Sync to Server 3
-      #   run: |
-      #     # Replace with your synchronization command for Server 3
-      #     ssh user@server3 "cd /path/to/your/shared/folder && git pull origin main"
+    - name: ssh-pipeline
+      # You may pin to the exact commit or the version.
+      # uses: cross-the-world/ssh-pipeline@7f022867934a210af826af99ef80d96f03a094d5
+      uses: cross-the-world/ssh-pipeline@v1.2.0
+      with:
+        # ssh remote host
+        host:  ${{ secrets.HOST }}
+        # ssh remote port
+        port: # optional, default is 22
+        # ssh remote user
+        user:  ${{ secrets.USER }}
+        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+        key: ${{ secrets.SSH_KEY }} # optional
+        # ssh remote password
+        pass: # optional
+        # connection timeout to remote host
+        connect_timeout: # optional, default is 30s
+        # execute commands on ssh
+        script: |
+        "cd /home/gustavo/testeCICD/cicd_teste && touch hi.txt"

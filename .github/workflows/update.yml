@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: Check Out Code
         uses: actions/checkout@v3.1.0
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_HOST }}
 
       - name: Sync to Server Kenobi
         run: |
           # Replace with your synchronization command for Server 1
-          ssh bymycell "cd /home/gustavo/testeCICD && git pull origin main"
+          ssh gustavo@200.144.221.118 "cd /home/gustavo/testeCICD && git pull origin main"
 
       # - name: Sync to Server Ahsoka
       #   run: |

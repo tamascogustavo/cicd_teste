@@ -1,0 +1,29 @@
+name: Update Servers
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v3.1.0
+
+      - name: Sync to Server Kenobi
+        run: |
+          # Replace with your synchronization command for Server 1
+          ssh gustavo@200.144.221.118 "cd /home/gustavo/testeCICD && git pull origin main"
+
+      # - name: Sync to Server Ahsoka
+      #   run: |
+      #     # Replace with your synchronization command for Server 2
+      #     ssh user@server2 "cd /path/to/your/shared/folder && git pull origin main"
+
+      # - name: Sync to Server 3
+      #   run: |
+      #     # Replace with your synchronization command for Server 3
+      #     ssh user@server3 "cd /path/to/your/shared/folder && git pull origin main"

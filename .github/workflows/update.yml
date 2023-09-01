@@ -20,7 +20,7 @@ jobs:
 
       - name: Sync to Server Kenobi
         run: |
-          ssh ${{ secrets.HOST }}@${{ secrets.HOST }} -i ${{ secrets.SSH_KEY }} "cd /home/gustavo/testeCICD && git pull origin main"
+          ssh ${{ secrets.HOST }}@${{ secrets.HOST }} -i ${{ secrets.SSH_KEY }} "cd /home/gustavo/testeCICD/cicd_teste && git pull origin main"
 
      # steps:
      #  - name: Check Out Code

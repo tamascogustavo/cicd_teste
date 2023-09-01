@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Check Out Code
         uses: actions/checkout@v3.1.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+        # with:
+        #   host: ${{ secrets.HOST }}
+        #   username: ${{ secrets.USER }}
+        #   key: ${{ secrets.SSH_KEY }}
           # passphrase: ${{ secrets.PASSPHRASE }}
 
       - name: Sync to Server Kenobi
